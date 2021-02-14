@@ -8,6 +8,10 @@ namespace LoggerModule2
 {
     public class Result
     {
+        public Result()
+        {
+        }
+
         public Result(bool status, string message = null)
         {
             Status = status;
