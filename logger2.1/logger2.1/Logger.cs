@@ -28,6 +28,7 @@ namespace LoggerModule2
         public static void AddLog(CodeLog codelog, string msg)
         {
             _log.Append($"{DateTime.Now}: {codelog}: {msg}\n");
+            Console.WriteLine($"{DateTime.Now}: {codelog}: {msg}\n");
         }
 
         public static string GetLog()
