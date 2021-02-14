@@ -33,6 +33,6 @@
 		/// <summary>
 		/// Code of broken logic: 2.
 		/// </summary>
-		BrokeLogik
+		BrokeLogic
     }
 }
