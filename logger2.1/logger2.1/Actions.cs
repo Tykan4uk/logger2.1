@@ -22,7 +22,6 @@ namespace LoggerModule2
 
         public Result BrokeLogic()
         {
-            Logger.AddLog(CodeLog.Error, $"Broken logic: {nameof(BrokeLogic)}");
             return new Result(false, "I broke a logic.");
         }
     }
