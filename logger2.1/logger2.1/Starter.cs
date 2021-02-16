@@ -22,13 +22,13 @@ namespace LoggerModule2
                 randomAction = _random.Next(_minRandomAction, _maxRandomAction);
                 switch (randomAction)
                 {
-                    case (int)ActionsMethod.StartMethod:
+                    case 0:
                         _result = _actions.StartMethod();
                         break;
-                    case (int)ActionsMethod.SkipLogic:
+                    case 1:
                         _result = _actions.SkipLogic();
                         break;
-                    case (int)ActionsMethod.BrokeLogic:
+                    case 2:
                         _result = _actions.BrokeLogic();
                         break;
                 }
