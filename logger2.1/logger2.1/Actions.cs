@@ -10,13 +10,13 @@ namespace LoggerModule2
     {
         public Result StartMethod()
         {
-            Logger.Log = $"{CodeLog.Info}: Start method: {nameof(StartMethod)}";
+            Logger.AddLog(CodeLog.Info, $"Start method: {nameof(StartMethod)}");
             return new Result(true);
         }
 
         public Result SkipLogic()
         {
-            Logger.Log = $"{CodeLog.Warning}: Skipped logic in method: {nameof(SkipLogic)}";
+            Logger.AddLog(CodeLog.Warning, $"Skipped logic in method: {nameof(SkipLogic)}");
             return new Result(true);
         }
 
