@@ -6,34 +6,24 @@ using System.Threading.Tasks;
 
 namespace LoggerModule2
 {
-   public class Logger
-{
-        private static Logger instance;
-        private static StringBuilder _log = new StringBuilder();
+    public class Logger
+    {
+        private static readonly Logger _Instance = new Logger();
+        private static readonly StringBuilder _Log = new StringBuilder();
 
         private Logger()
         {
         }
 
-        public static Logger GetInstance()
+        public static Logger Current => _Instance;
+        public static string Log
         {
-            if (instance == null)
+            get => _Log.ToString();
+            set
             {
-                instance = new Logger();
+                _Log.Append($"{DateTime.Now}: {value}{Environment.NewLine}");
+                Console.WriteLine($"{DateTime.Now}: {value}");
             }
-
-            return instance;
         }
-
-        public static void AddLog(CodeLog codelog, string msg)
-        {
-            _log.Append($"{DateTime.Now}: {codelog}: {msg}{Environment.NewLine}");
-            Console.WriteLine($"{DateTime.Now}: {codelog}: {msg}");
-        }
-
-        public static string GetLog()
-        {
-            return _log.ToString();
-        }
-}
+    }
 }
