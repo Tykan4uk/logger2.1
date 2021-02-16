@@ -14,6 +14,7 @@ namespace LoggerModule2
         private readonly Random _random = new Random();
         private readonly Actions _actions = new Actions();
         private Result _result = new Result();
+        private Logger _logStarter = Logger.Current;
         public void Run()
         {
             var randomAction = 0;
@@ -35,11 +36,11 @@ namespace LoggerModule2
 
                 if (!_result.Status)
                 {
-                    Logger.Log = $"{CodeLog.Error}: Action failed by a reason: {_result.Message}";
+                    _logStarter.Instance = $"{CodeLog.Error}: Action failed by a reason: {_result.Message}";
                 }
             }
 
-            File.WriteAllText("log.txt", Logger.Log);
+            File.WriteAllText("log.txt", _logStarter.Instance);
         }
     }
 }

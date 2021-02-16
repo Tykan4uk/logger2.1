@@ -8,21 +8,22 @@ namespace LoggerModule2
 {
     public class Logger
     {
-        private static readonly Logger _Instance = new Logger();
-        private static readonly StringBuilder _Log = new StringBuilder();
+        private static readonly Logger _instance = new Logger();
+        private readonly StringBuilder _log = new StringBuilder();
 
         private Logger()
         {
         }
 
-        public static Logger Current => _Instance;
-        public static string Log
+        public static Logger Current => _instance;
+        public string Instance
         {
-            get => _Log.ToString();
+            get => _log.ToString();
             set
             {
-                _Log.Append($"{DateTime.Now}: {value}{Environment.NewLine}");
-                Console.WriteLine($"{DateTime.Now}: {value}");
+                var tempString = $"{DateTime.Now}: {value}";
+                _log.AppendLine(tempString);
+                Console.WriteLine(tempString);
             }
         }
     }

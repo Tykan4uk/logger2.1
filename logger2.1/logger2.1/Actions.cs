@@ -8,15 +8,16 @@ namespace LoggerModule2
 {
     public class Actions
     {
+        private Logger _logActions = Logger.Current;
         public Result StartMethod()
         {
-            Logger.Log = $"{CodeLog.Info}: Start method: {nameof(StartMethod)}";
+            _logActions.Instance = $"{CodeLog.Info}: Start method: {nameof(StartMethod)}";
             return new Result(true);
         }
 
         public Result SkipLogic()
         {
-            Logger.Log = $"{CodeLog.Warning}: Skipped logic in method: {nameof(SkipLogic)}";
+            _logActions.Instance = $"{CodeLog.Warning}: Skipped logic in method: {nameof(SkipLogic)}";
             return new Result(true);
         }
 
