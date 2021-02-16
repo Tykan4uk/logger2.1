@@ -2,8 +2,8 @@
 {
 	public enum ActionsMethod
     {
-		StartMethod,
-		SkipLogic,
-		BrokeLogic
+		StartMethod = 0,
+		SkipLogic = 1,
+		BrokeLogic = 2
     }
 }
