@@ -9,27 +9,37 @@ namespace LoggerModule2
 {
     public class Starter
     {
+        private readonly int _minRandomAction = 0;
+        private readonly int _maxRandomAction = 3;
+        private readonly Random _random = new Random();
+        private readonly Actions _actions = new Actions();
+        private Result _result = new Result();
         public void Run()
         {
-            var actions = new Actions();
-            var result = new Result();
+            var randomAction = 0;
             for (var i = 0; i < 100; i++)
             {
-                var rnd = (ActionsMethod)new Random().Next(0, 3);
-                switch (rnd)
+                randomAction = _random.Next(_minRandomAction, _maxRandomAction);
+                switch (randomAction)
                 {
-                    case ActionsMethod.StartMethod: result = actions.StartMethod(); break;
-                    case ActionsMethod.SkipLogic: result = actions.SkipLogic(); break;
-                    case ActionsMethod.BrokeLogic: result = actions.BrokeLogic(); break;
+                    case (int)ActionsMethod.StartMethod:
+                        _result = _actions.StartMethod();
+                        break;
+                    case (int)ActionsMethod.SkipLogic:
+                        _result = _actions.SkipLogic();
+                        break;
+                    case (int)ActionsMethod.BrokeLogic:
+                        _result = _actions.BrokeLogic();
+                        break;
                 }
 
-                if (!result.Status)
+                if (!_result.Status)
                 {
-                    Logger.AddLog(CodeLog.Error, $"Action failed by a reason: {result.Message}");
+                    Logger.Log = $"{CodeLog.Error}: Action failed by a reason: {_result.Message}";
                 }
             }
 
-            File.WriteAllText("log.txt", Logger.GetLog());
+            File.WriteAllText("log.txt", Logger.Log);
         }
     }
 }
