@@ -15,16 +15,33 @@ namespace LoggerModule2
         {
         }
 
-        public static Logger Current => _instance;
-        public string Instance
+        public static Logger Instance => _instance;
+
+        public void Log(CodeLog type, string message)
         {
-            get => _log.ToString();
-            set
-            {
-                var tempString = $"{DateTime.Now}: {value}";
-                _log.AppendLine(tempString);
-                Console.WriteLine(tempString);
-            }
+            var tempString = $"{DateTime.Now}: {type}: {message}";
+            _log.AppendLine(tempString);
+            Console.WriteLine(tempString);
+        }
+
+        public void LogError(string message)
+        {
+            Log(CodeLog.Error, message);
+        }
+
+        public void LogInfo(string message)
+        {
+            Log(CodeLog.Info, message);
+        }
+
+        public void LogWarning(string message)
+        {
+            Log(CodeLog.Warning, message);
+        }
+
+        public string ReturnLog()
+        {
+            return _log.ToString();
         }
     }
 }
